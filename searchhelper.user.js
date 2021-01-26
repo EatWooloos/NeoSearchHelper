@@ -148,7 +148,7 @@ if (isBeta) {
 
     //  Create a table row with this format:
     //  | Page name | (icons) | Check all |
-    const checkboxes = (name, configkey, title = name) => {
+    const checkboxes = (name, configkey, title) => {
 
         let row = ` <!--${name}--><tr>
             <td ${title !== undefined ? 'title="' + title + '"' : ``} style="cursor:pointer;">${name}</td>
