@@ -45,16 +45,16 @@ if (!GM_getValue) {
 /*****************************************************************************************************/
 //
 
-//---
+//--------------------------------------------------------------
 // Some keys are combined:
 // mainshops      = Main shops, Igloo garage sale, General store
 // inventory      = Inventory, NC redemption popup
 // yourshop       = Shop stock, shop sales history
 // npcquests      = Snow Faerie, Edna, Esophagor, Kitchen Quest
 // trainingschool = Pirate/Island/Ninja schools
-//---
+//--------------------------------------------------------------
 
-newestConfig = { // update our latest changes here
+const newestConfig = { // update our latest changes here
     // @formatter:off
     "mainshops"      : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 0, dti: 0},
     "inventory"      : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 1, dti: 1},
@@ -137,9 +137,8 @@ const linkmap = { // for urls and images for each search type
     }
 };
 
-// Add Search Helper configuration menu
-// only add it to the Beta layout, since the old layout will be phased out eventually.
-if (isBeta) {
+// Add Search Helper configuration menu to inventory
+if (isBeta && document.URL.includes("inventory")) {
 
     // Can't get left navbar positioning to work lol
     // $(`<div id="searchhelper-settings" style="display:inline-block;"><div style="height: 30px; width: 30px; margin: auto 4px auto 0;  vertical-align: middle; background: url(http://images.neopets.com/premium/portal/images/settings-icon.png) center center no-repeat; background-size: 100% auto; display:inline-flex;"></div> <span class="np-text__2020">Search Helper</span></div>`).appendTo($("[class^='navsub-left']"));
@@ -165,7 +164,9 @@ if (isBeta) {
             <td><input type="checkbox" class="closet_${configkey}"></td>
             <td><input type="checkbox" class="dti_${configkey}"></td>`;
         } else {
-            row += `<td></td><td></td>`;
+            row += `
+            <td><input class="0_0" type="checkbox" disabled></td>
+            <td><input class="0_0" type="checkbox" disabled></td>`;
         }
 
         row += `<td style="background-color: #7D7D7D"><input type="checkbox" class="rowALL_${configkey}"></td></tr>`;
@@ -299,11 +300,12 @@ if (isBeta) {
     $("#sh-default").on("click", function () {
         if (window.confirm("Configurations will be reset to default. Proceed?")) {
             importSettings(newestConfig);
+            $(".sh-wrapper").find("input[class*='ALL']").prop("checked", false);
         }
     });
 
     function importSettings(Settings) {
-        $(".sh-wrapper tbody").find("input:not([class*='ALL'])").each(function (index, element) {
+        $(".sh-wrapper tbody").find("input:not([class*='ALL'], :disabled)").each(function (index, element) {
             const [icon, configkey] = $(element).attr("class").split("_");
             $(element).prop("checked", !!Settings[configkey][icon]);
         });
@@ -349,7 +351,7 @@ if (isBeta) {
             // Both
             if (thisClass === "rowALL_colALL") {
                 const isChecked = $(this).is(":checked");
-                $(".sh-wrapper :checkbox").prop("checked", isChecked);
+                $(".sh-wrapper :checkbox:not(:disabled)").prop("checked", isChecked);
             } else {
                 // Vertical (search icon)
                 if (thisClass.includes("colALL")) {
