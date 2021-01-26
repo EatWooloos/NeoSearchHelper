@@ -56,23 +56,23 @@ if (!GM_getValue) {
 
 newestConfig = { // update our latest changes here
     // @formatter:off
-    "mainshops"      : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 1, jni: 1, battlepedia: 1, dti: 1},
-    "inventory"      : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 1, jni: 1, battlepedia: 1, dti: 1},
-    "tradingpost"    : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 1, jni: 1, battlepedia: 1, dti: 1},
-    "auction"        : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 1, jni: 1, battlepedia: 1, dti: 1},
-    "sdb"            : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 0, closet: 1, jni: 1, battlepedia: 1, dti: 1},
-    "yourshop"       : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 1, jni: 1, battlepedia: 1, dti: 1},
-    "gallery"        : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 1, jni: 1, battlepedia: 1, dti: 1},
-    "coincidence"    : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 0, jni: 1, battlepedia: 0, dti: 1},
-    "trainingschool" : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 0, jni: 1, battlepedia: 0, dti: 1},
-    "npcquests"      : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 1, jni: 1, battlepedia: 0, dti: 1},
-    "illusen"        : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 1, jni: 1, battlepedia: 1, dti: 1},
-    "employment"     : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 1, jni: 1, battlepedia: 1, dti: 1},
-    "quests"         : {ssw: 0, sw: 1, tp: 1, au: 1, sdb: 1, closet: 1, jni: 1, battlepedia: 1, dti: 1},
-    "kadoatery"      : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 0, jni: 1, battlepedia: 0, dti: 1},
-    "hiddentower"    : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 1, jni: 1, battlepedia: 1, dti: 1},
-    "battledome"     : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 0, jni: 1, battlepedia: 1, dti: 1},
-    "hospital"       : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, closet: 1, jni: 1, battlepedia: 1, dti: 1},
+    "mainshops"      : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 0, dti: 0},
+    "inventory"      : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 1, dti: 1},
+    "tradingpost"    : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 0, dti: 0},
+    "auction"        : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 0, dti: 0},
+    "sdb"            : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 0, jni: 1, battlepedia: 1, closet: 1, dti: 1},
+    "yourshop"       : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 0, dti: 0},
+    "gallery"        : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 0, dti: 0},
+    "coincidence"    : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 0, closet: 0, dti: 0},
+    "trainingschool" : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 0, closet: 0, dti: 0},
+    "npcquests"      : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 0, closet: 0, dti: 0},
+    "illusen"        : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 0, dti: 0},
+    "employment"     : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 0, dti: 0},
+    "quests"         : {ssw: 0, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 0, dti: 0},
+    "kadoatery"      : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 0, closet: 0, dti: 0},
+    "hiddentower"    : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 0, dti: 0},
+    "battledome"     : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 1, closet: 0, dti: 0},
+    "hospital"       : {ssw: 1, sw: 1, tp: 1, au: 1, sdb: 1, jni: 1, battlepedia: 0, closet: 0, dti: 0},
     // @formatter:on
 };
 
@@ -120,10 +120,6 @@ const linkmap = { // for urls and images for each search type
         "url": "http://www.neopets.com/safetydeposit.phtml?obj_name=%s&category=0",
         "img": "http://images.neopets.com/images/emptydepositbox.gif"
     },
-    closet: {
-        "url": "http://www.neopets.com/closet.phtml?obj_name=%s",
-        "img": "http://images.neopets.com/items/ffu_illusen_armoire.gif"
-    },
     jni: {
         "url": "https://items.jellyneo.net/search/?name=%s&name_type=3",
         "img": "http://images.neopets.com/items/toy_plushie_negg_fish.gif"
@@ -131,6 +127,10 @@ const linkmap = { // for urls and images for each search type
     battlepedia: {
         "url": "http://battlepedia.jellyneo.net/index.php?search=%s",
         "img": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAChklEQVQ4T5XRW0iTARQH8P83Vi7n2CUvm0hroW7aFK1t+nkBe1BYK7KHoCYZXpplPUTkQ0WQQg9FIURiZHRDs8wEK6QNibFhZagT3drmFadJlq3mnM55+cIvIqKmdZ4Pv/M/5xAhigO5LOaGWI975hkGXnzAfxbBSy84oi3Q3vP7/Qv91n6Tw+547PXOtMPeNvYvFoFYdUTJsaPDMTExHKlUitnZWej1+hm705n0/sll13oIsdqgKLyoL9Pp8qanp8FgMCAQCNDU1GQnNi4qDVcrfGshNMAnC05UVlXdYLFYcDqdEIlE8Hg8MJvN9cbaisPrApDtji8pLXWQJElQFAWXywU2m43x8XEMj46Uvbx28lYwhE5AV4I6XbNnb4P2kHab2+3G5OQknSIQCMzdrqlOwYhpcLUtTY7k8DBGoW9h5ZHRgq5fAIDoHF345kh+XVZWdr5EIoHNZgOXy4XF0tNn7m5WkP5uTrGasHFCIbz5HK1GC5X/G/AzzJa84zqpTFotl8tDV9OIxWI0NjY2cB0116+UL3XWGxAYmqBkpj6M/hWgofgcWUSUuE6pUmUxmUzExcWht+V8a1Hq2319I0CHldJ09KMtOPAjDhGmPFiVmJhQIRQKQySCuTenxKfJM7VwTXyhVJ1WTK0J5KSA551H6s4d0Q/ZYtKrkQ5EGgxWbs8gcbe9a6WYnhDsPRkJECu3E3VFauQ6xoCtIqDFBETwgKVl4NNXuLqGKEVQQJOOc8Ua4tI7OxY/ukF99sDhm6OeZsiJyig+kJkEXLhDnQ0K7EpGGmsTUe3zU/f9C2gOZWHZ2ItvJRqic382VK+t9CF16x3xjw0zpeDw+CifD2DqVQ8efAfoI/lhtfaY7AAAAABJRU5ErkJggg=="
+    },
+    closet: {
+        "url": "http://www.neopets.com/closet.phtml?obj_name=%s",
+        "img": "http://images.neopets.com/items/ffu_illusen_armoire.gif"
     },
     dti: {
         "img": "data:image/gif;base64,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"
@@ -148,21 +148,45 @@ if (isBeta) {
 
     //  Create a table row with this format:
     //  | Page name | (icons) | Check all |
-    const checkboxes = (name, configkey, title = name) => `
-<!--${name}-->
-<tr>
-    <td title="${title}" style="cursor: pointer;">${name}</td>
-    <td><input type="checkbox" class="ssw_${configkey}"></td>
-    <td><input type="checkbox" class="sw_${configkey}"></td>
-    <td><input type="checkbox" class="tp_${configkey}"></td>
-    <td><input type="checkbox" class="au_${configkey}"></td>
-    <td><input type="checkbox" class="sdb_${configkey}"></td>
-    <td><input type="checkbox" class="closet_${configkey}"></td>
-    <td><input type="checkbox" class="jni_${configkey}"></td>
-    <td><input type="checkbox" class="battlepedia_${configkey}"></td>
-    <td><input type="checkbox" class="dti_${configkey}"></td>
-    <td style="background-color: #7D7D7D"><input type="checkbox" class="rowALL_${configkey}"></td>
-</tr>`;
+    const checkboxes = (name, configkey, title = name) => {
+
+        let row = ` <!--${name}--><tr>
+            <td ${title !== undefined ? 'title="' + title + '"' : ``} style="cursor:pointer;">${name}</td>
+            <td><input type="checkbox" class="ssw_${configkey}"></td> 
+            <td><input type="checkbox" class="sw_${configkey}"></td>  
+            <td><input type="checkbox" class="tp_${configkey}"></td>  
+            <td><input type="checkbox" class="au_${configkey}"></td>  
+            <td><input type="checkbox" class="sdb_${configkey}"></td> 
+            <td><input type="checkbox" class="jni_${configkey}"></td>
+            <td><input type="checkbox" class="battlepedia_${configkey}"></td>`;
+
+        if (configkey === "inventory" || configkey === "sdb") {
+            row += `
+            <td><input type="checkbox" class="closet_${configkey}"></td>
+            <td><input type="checkbox" class="dti_${configkey}"></td>`;
+        } else {
+            row += `<td></td><td></td>`;
+        }
+
+        row += `<td style="background-color: #7D7D7D"><input type="checkbox" class="rowALL_${configkey}"></td></tr>`;
+
+        return row;
+
+        // <!--${name}-->
+        // <tr>
+        //     <td title="${title}" style="cursor: pointer;">${name}</td>
+        //     <td><input type="checkbox" class="ssw_${configkey}"></td>
+        //     <td><input type="checkbox" class="sw_${configkey}"></td>
+        //     <td><input type="checkbox" class="tp_${configkey}"></td>
+        //     <td><input type="checkbox" class="au_${configkey}"></td>
+        //     <td><input type="checkbox" class="sdb_${configkey}"></td>
+        //     <td><input type="checkbox" class="jni_${configkey}"></td>
+        //     <td><input type="checkbox" class="battlepedia_${configkey}"></td>
+        //     <td><input type="checkbox" class="closet_${configkey}"></td>
+        //     <td><input type="checkbox" class="dti_${configkey}"></td>
+        //     <td style="background-color: #7D7D7D"><input type="checkbox" class="rowALL_${configkey}"></td>
+        // </tr>
+    };
 
     // Add configuration menu to Beta pages
     // Can only be accessed from inventory & main shops for now
@@ -223,19 +247,19 @@ if (isBeta) {
                 <th><img src="${linkmap.tp.img}" title="Trading Post"></th>
                 <th><img src="${linkmap.au.img}" title="Auction"></th>
                 <th><img src="${linkmap.sdb.img}" title="Safety Deposit Box"></th>
-                <th><img src="${linkmap.closet.img}" title="Closet"></th>
                 <th><img src="${linkmap.jni.img}" title="Jellyneo"></th>
                 <th><img src="${linkmap.battlepedia.img}" title="Battlepedia"></th>
+                <th><img src="${linkmap.closet.img}" title="Closet"></th>
                 <th><img src="${linkmap.dti.img}" title="Dress to Impress"></th>
                 <th style="background-color: #7D7D7D"><b>All</b></th>
             </tr>
             </thead>
             <tbody>
-                ${checkboxes("Main Shops", "mainshops", "- Main shops\n- Igloo Garage Sale\n- General Store")}
                 ${checkboxes("Inventory", "inventory")}
+                ${checkboxes("Safety Deposit Box", "sdb")}
+                ${checkboxes("Main Shops", "mainshops", "- Main shops\n- Igloo Garage Sale\n- General Store")}
                 ${checkboxes("Trading Post", "tradingpost")}
                 ${checkboxes("Auction", "auction")}
-                ${checkboxes("Safety Deposit Box", "sdb")}
                 ${checkboxes("Your Shop", "yourshop", "- Shop stock\n- Your shop's sales history")}
                 ${checkboxes("Gallery", "gallery")}
                 ${checkboxes("Coincidence", "coincidence")}
@@ -411,11 +435,6 @@ function makelinks(page, item, extras) {
         links += combiner(item, linkmap.sdb.url, linkmap.sdb.img);
     }
 
-    // Closet
-    if (extras.wearable && page.closet) {
-        links += combiner(item, linkmap.closet.url, linkmap.closet.img);
-    }
-
     // JN items
     if (page.jni) {
         links += combiner(item, linkmap.jni.url, linkmap.jni.img);
@@ -424,6 +443,11 @@ function makelinks(page, item, extras) {
     // Battlepedia
     if (page.battlepedia) {
         links += combiner(item, linkmap.battlepedia.url, linkmap.battlepedia.img);
+    }
+
+    // Closet
+    if (extras.wearable && page.closet) {
+        links += combiner(item, linkmap.closet.url, linkmap.closet.img);
     }
 
     // DTI
