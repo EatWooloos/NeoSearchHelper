@@ -151,11 +151,11 @@ if (isBeta && document.URL.includes("inventory")) {
 
         let row = ` <!--${name}--><tr>
             <td ${title !== undefined ? 'title="' + title + '"' : ``} style="cursor:pointer;">${name}</td>
-            <td><input type="checkbox" class="ssw_${configkey}"></td> 
-            <td><input type="checkbox" class="sw_${configkey}"></td>  
-            <td><input type="checkbox" class="tp_${configkey}"></td>  
-            <td><input type="checkbox" class="au_${configkey}"></td>  
-            <td><input type="checkbox" class="sdb_${configkey}"></td> 
+            <td><input type="checkbox" class="ssw_${configkey}"></td>
+            <td><input type="checkbox" class="sw_${configkey}"></td>
+            <td><input type="checkbox" class="tp_${configkey}"></td>
+            <td><input type="checkbox" class="au_${configkey}"></td>
+            <td><input type="checkbox" class="sdb_${configkey}"></td>
             <td><input type="checkbox" class="jni_${configkey}"></td>
             <td><input type="checkbox" class="battlepedia_${configkey}"></td>`;
 
@@ -193,26 +193,26 @@ if (isBeta && document.URL.includes("inventory")) {
     // Can only be accessed from inventory & main shops for now
     $(`
 <style>
-    .sh-menu img, input[type=checkbox] {
+    .sh-menu {
+        z-index: 9000;
+        background-color: #FFFFFF;
+        font-family: MuseoSansRounded500, Arial, sans-serif;
+    }
+    
+    #sh-tabs-table img, input[type=checkbox] {
         height: ${imgSize}px !important;
         width: ${imgSize}px !important;
     }
 
-    .sh-menu {
-        z-index: 3000;
-        background-color: #FFFFFF;
-        font-family: MuseoSansRounded500, Arial, sans-serif;
-    }
-
-    .sh-menu td:first-child {
+    #sh-tabs-table td:first-child {
         padding: 5px 4px;
     }
 
-    .sh-menu tr td:not(:first-child) {
+    #sh-tabs-table tr td:not(:first-child) {
         text-align: center;
     }
 
-    .sh-menu tr:hover {
+    #sh-tabs-table tr:hover {
         background-color: #a8a8a8;
     }
 
@@ -229,8 +229,29 @@ if (isBeta && document.URL.includes("inventory")) {
         font-weight: bold;
         text-align: center;
     }
+
+    .sh-tabs button {
+        display: inline-block;
+        width: 45%;
+    }
+    
+    .sh-tabs .active {
+        background-color: #aaaeff;
+    }
+    
+    #sh-tabs-export textarea {
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        resize: none;
+        width: 100%;
+        padding: 6px;
+    }
+    
+    #sh-tabs-export td {
+        padding: 20px;
+    }
 </style>
-<div class="sh-menu togglePopup__2020" style="display:none; width: 70%; max-width: 1000px; max-height: 800px;">
+<div class="sh-menu togglePopup__2020" style="display:none; width: 80%; max-width: 1000px; max-height: 800px;">
     <div class="popup-header__2020">
         <h3>Search Helper Settings</h3>
         <div id="sh-close" class="inv-popup-exit button-default__2020 button-red__2020 popup-left-button__2020">
@@ -238,22 +259,22 @@ if (isBeta && document.URL.includes("inventory")) {
         </div>
         <div class="popup-header-pattern__2020"></div>
     </div>
-    <div class="sh-wrapper" style="overflow-y: scroll; max-height:700px">
-        <table style="width: 95%; margin-left: auto; margin-right: auto; overflow-y: scroll; border-collapse: collapse">
+    <div class="sh-wrapper" style="display:flex; max-height:700px">
+        <table id="sh-tabs-table" style="width: 95%; overflow-y: scroll; border-collapse: collapse; margin: 10px;">
             <thead>
-            <tr>
-                <th></th>
-                <th><img src="${linkmap.ssw.img}" title="Super Shop Wizard"></th>
-                <th><img src="${linkmap.sw.img}" title="Shop Wizard"></th>
-                <th><img src="${linkmap.tp.img}" title="Trading Post"></th>
-                <th><img src="${linkmap.au.img}" title="Auction"></th>
-                <th><img src="${linkmap.sdb.img}" title="Safety Deposit Box"></th>
-                <th><img src="${linkmap.jni.img}" title="Jellyneo"></th>
-                <th><img src="${linkmap.battlepedia.img}" title="Battlepedia"></th>
-                <th><img src="${linkmap.closet.img}" title="Closet"></th>
-                <th><img src="${linkmap.dti.img}" title="Dress to Impress"></th>
-                <th style="background-color: #7D7D7D"><b>All</b></th>
-            </tr>
+                <tr>
+                    <th></th>
+                    <th><img src="${linkmap.ssw.img}" title="Super Shop Wizard"></th>
+                    <th><img src="${linkmap.sw.img}" title="Shop Wizard"></th>
+                    <th><img src="${linkmap.tp.img}" title="Trading Post"></th>
+                    <th><img src="${linkmap.au.img}" title="Auction"></th>
+                    <th><img src="${linkmap.sdb.img}" title="Safety Deposit Box"></th>
+                    <th><img src="${linkmap.jni.img}" title="Jellyneo"></th>
+                    <th><img src="${linkmap.battlepedia.img}" title="Battlepedia"></th>
+                    <th><img src="${linkmap.closet.img}" title="Closet"></th>
+                    <th><img src="${linkmap.dti.img}" title="Dress to Impress"></th>
+                    <th style="background-color: #7D7D7D"><b>All</b></th>
+                </tr>
             </thead>
             <tbody>
                 ${checkboxes("Inventory", "inventory")}
@@ -278,21 +299,48 @@ if (isBeta && document.URL.includes("inventory")) {
                 ${checkboxes("Check all", "colALL")}
             </tfoot>
         </table>
+        <table id="sh-tabs-export" style="display: none; text-align: center; margin: 10px auto; width: 80%;">
+            <tr>
+                <td>
+                    <textarea id="text-export" rows="25" readonly></textarea>
+                    <br><br>
+                    <button id="click-export" class="button-default__2020 button-blue__2020" style="width: 50%">Export</button>
+                </td>
+                <td>
+                    <textarea id="text-import" rows="25" placeholder="This isn't working yet. WIP."></textarea>
+                    <br><br>
+                    <button id="click-import" class="button-default__2020 button-blue__2020" style="width: 50%">Import</button>
+                </td>
+            </tr>
+        </table>
+        <!--div id="sh-tabs-import" style="display: none; text-align: center; margin: 10px; width: 80%;">
+            <textarea style="font-family: Arial, sans-serif; font-size: 12px; resize: none; width: 90%;" rows="25"></textarea>
+            <button>Import</button>
+        </div-->
+    </div>
+    <div class="sh-tabs" style="text-align: center; padding: 8px">
+        <button id="tab-table" class="button-default__2020 active">Pages</button>
+        <button id="tab-export" class="button-default__2020">Export</button>
+        <!--button id="tab-import" class="button-default__2020">Import</button-->
     </div>
     <div style="padding: 10px; text-align: center;">
-        <div style="display:inline;">
-            <button id="sh-default" class="button-default__2020 button-yellow__2020" style="width: 20%;">Reset to default</button>
-        </div>
-        <!--div style="display:inline;">
-            <button id="sh-default" class="button-default__2020 button-blue__2020" style="width: 20%;">Import...</button>
-        </div-->
+        <button id="sh-default" class="button-default__2020 button-yellow__2020" style="width: 20%; display:inline;">Reset to default</button>
         &nbsp;&nbsp;
-        <div style="display:inline;">
-            <button id="sh-save" class="button-default__2020 button-green__2020" style="width: 20%;">Save</button>
-        </div>
+        <button id="sh-save" class="button-default__2020 button-green__2020" style="width: 20%; display:inline;">Save</button>
     </div>
 </div>
     `).appendTo("body");
+
+// Tab buttons
+    $(".sh-tabs").find("button").each(function (index, element) {
+        $(element).on("click", function () {
+            const tab = $(element).attr("id").replace(/tab-/, ``);
+            $(".sh-tabs").find("button").removeClass("active");
+            $(element).toggleClass("active");
+            $(".sh-wrapper").find("[id^='sh-tabs']").hide();
+            $(`#sh-tabs-${tab}`).show();
+        });
+    });
 
 // Preload configuration
     importSettings(Config);
@@ -311,11 +359,39 @@ if (isBeta && document.URL.includes("inventory")) {
         });
     }
 
+// Export/import
+    $("#text-export").val(JSON.stringify(Config));
+
+    $(`<div id="copied-popup" style="text-align: center; padding: 10px; opacity: 90%; background-color: #3c3f41; color: #FFFFFF; font-size: 16px; border-radius: 5px; display: none; width: auto; font-family: MuseoSansRounded500, Arial, sans-serif;">Copied to clipboard!</div>`).appendTo("body");
+
+    $("#click-export").on("click", function (e) {
+
+        $("#text-export").select();
+        document.execCommand("copy");
+
+        $("#copied-popup").css({
+            "position" : "absolute",
+            "top" : e.pageY,
+            "left" : e.pageX,
+            "z-index" : 9001
+        }).fadeIn(100);
+
+        setTimeout(function () {
+            $("#copied-popup").fadeOut(100);
+        }, 1000);
+    });
+
 // Menu positioning
     $("#searchhelper-settings").on("click", function () {
-        $("#navdropdownshade__2020").show();
+
+        $("#navdropdownshade__2020").fadeIn(300);
         reposition();
-        $(".sh-menu").show();
+        $(".sh-menu").fadeIn(300);
+
+        // Temporary method to fix all three tabs to the same height
+        const tableHeight = $("#sh-tabs-table").css("height");
+        $("#sh-tabs-export, #sh-tabs-import").css({"height": tableHeight});
+
     });
     $(window).on("resize", reposition);
 
@@ -339,8 +415,8 @@ if (isBeta && document.URL.includes("inventory")) {
     $("#sh-close").on("click", closeMenu); // Click X to close menu
 
     function closeMenu() {
-        $("#navdropdownshade__2020").hide();
-        $(".sh-menu").hide();
+        $("#navdropdownshade__2020").fadeOut(300);
+        $(".sh-menu").fadeOut(300);
     }
 
 // Check all
@@ -375,6 +451,7 @@ if (isBeta && document.URL.includes("inventory")) {
             GM_setValue("Config", Config);
         });
         closeMenu();
+        $("#text-export").val(JSON.stringify(Config));
     });
 }
 
