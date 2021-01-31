@@ -362,24 +362,65 @@ if (isBeta && document.URL.includes("inventory")) {
 // Export/import
     $("#text-export").val(JSON.stringify(Config));
 
-    $(`<div id="copied-popup" style="text-align: center; padding: 10px; opacity: 90%; background-color: #3c3f41; color: #FFFFFF; font-size: 16px; border-radius: 5px; display: none; width: auto; font-family: MuseoSansRounded500, Arial, sans-serif;">Copied to clipboard!</div>`).appendTo("body");
+    $(`<div id="copied-popup" style="text-align: center; padding: 10px; opacity: 90%; background-color: #3c3f41; color: #FFFFFF; font-size: 16px; border-radius: 5px; display: none; width: auto; font-family: MuseoSansRounded500, Arial, sans-serif;"></div>`).appendTo("body");
 
     $("#click-export").on("click", function (e) {
 
         $("#text-export").select();
         document.execCommand("copy");
 
-        $("#copied-popup").css({
-            "position" : "absolute",
-            "top" : e.pageY,
-            "left" : e.pageX,
-            "z-index" : 9001
+        $("#copied-popup").html("Copied to clipboard!").css({
+            "position": "absolute",
+            "top": e.pageY,
+            "left": e.pageX,
+            "z-index": 9001
         }).fadeIn(100);
 
         setTimeout(function () {
             $("#copied-popup").fadeOut(100);
         }, 1000);
     });
+
+    $("#click-import").on("click", function (e) {
+
+        let input;
+
+        try {
+            input = JSON.parse($("#text-import").val());
+
+            if (JSON.stringify(Object.keys(input)) !== JSON.stringify(Object.keys(newestConfig))) {
+                $("#copied-popup").html("There was an error parsing your input.").css({
+                    "position": "absolute",
+                    "top": e.pageY,
+                    "left": e.pageX,
+                    "z-index": 9001
+                }).fadeIn(100);
+            } else {
+                $("#copied-popup").html("Success").css({
+                    "position": "absolute",
+                    "top": e.pageY,
+                    "left": e.pageX,
+                    "z-index": 9001
+                }).fadeIn(100);
+
+                Config = input;
+            }
+
+        } catch (error) {
+            $("#copied-popup").html(error).css({
+                "position": "absolute",
+                "top": e.pageY,
+                "left": e.pageX,
+                "z-index": 9001
+            }).fadeIn(100);
+        }
+
+        setTimeout(function () {
+            $("#copied-popup").fadeOut(100);
+        }, 2000);
+
+    });
+
 
 // Menu positioning
     $("#searchhelper-settings").on("click", function () {
@@ -445,7 +486,7 @@ if (isBeta && document.URL.includes("inventory")) {
 
 // Save the configuration settings
     $("#sh-save").on("click", function () {
-        $(".sh-wrapper tbody").find("input:not([class*='ALL'])").each(function (index, element) {
+        $(".sh-wrapper tbody").find("input:not([class*='ALL'], :disabled)").each(function (index, element) {
             const [icon, configkey] = $(element).attr("class").split("_");
             Config[configkey][icon] = $(element).is(":checked") ? 1 : 0;
             GM_setValue("Config", Config);
